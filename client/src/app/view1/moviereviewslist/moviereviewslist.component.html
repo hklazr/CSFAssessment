@@ -1,0 +1,17 @@
+<div *ngIf="reviews.length === 0">
+    Your search produced no results.
+  </div>
+  
+  <div *ngFor="let review of reviews" class="review">
+    <h3>
+      <a [href]="review.linkUrl" target="_blank">{{ review.displayTitle }}</a>
+    </h3>
+    <p>Rating: {{ review.mpaaRating }}</p>
+    <p>Summary: {{ review.summaryShort }}</p>
+    <p>Number of comments: {{ review.commentCount }}</p>
+    <img [src]="review.multimediaSrc || 'assets/placeholder.jpg'" alt="Movie image">
+    <button (click)="onCommentButtonClick(review)">Comment on this movie</button>
+  </div>
+  
+  <button (click)="onBackButtonClick()">Back</button>
+  

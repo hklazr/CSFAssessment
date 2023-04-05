@@ -1,0 +1,34 @@
+<div class="post-comment">
+    <h2>{{ movieTitle }}</h2>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" />
+        <div *ngIf="commentForm.controls['name'].invalid && commentForm.controls['name'].touched">
+          <p *ngIf="commentForm.controls['name']?.errors?.['required']">Name is required.</p>
+          <p *ngIf="commentForm.controls['name']?.errors?.['minlength']">Name must be at least 3 characters long.</p>
+        </div>
+      </div>
+  
+      <div>
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" formControlName="rating" />
+        <div *ngIf="commentForm.controls['rating'].invalid && commentForm.controls['rating'].touched">
+          <p *ngIf="commentForm.controls['rating']?.errors?.['required']">Rating is required.</p>
+          <p *ngIf="commentForm.controls['rating']?.errors?.['min'] || commentForm.controls['rating']?.errors?.['max']">Rating must be between 1 and 5.</p>
+        </div>
+      </div>
+  
+      <div>
+        <label for="comment">Comment:</label>
+        <textarea id="comment" formControlName="comment"></textarea>
+        <div *ngIf="commentForm.controls['comment'].invalid && commentForm.controls['comment'].touched">
+          <p *ngIf="commentForm.controls['comment']?.errors?.['required']">Comment is required.</p>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="commentForm.invalid">Post</button>
+      <button type="button" (click)="onBackButtonClick()">Back</button>
+    </form>
+  </div>
+  

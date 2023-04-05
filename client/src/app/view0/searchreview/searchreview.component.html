@@ -1,0 +1,7 @@
+<div class="search-container">
+    <form [formGroup]="searchForm" (ngSubmit)="processForm()">
+      <input formControlName="movieName" type="text" placeholder="Enter movie name">
+      <button [disabled]="!searchForm.valid">Search</button>
+    </form>
+  </div>
+  
