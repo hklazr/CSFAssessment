@@ -73,7 +73,6 @@ public class MovieService {
 				}
 			}
 		} catch (HttpClientErrorException e) {
-			// Log the error and return an empty list
 		}
 		return reviews;
 	}
